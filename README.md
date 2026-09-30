@@ -9,18 +9,18 @@ For the complete architectural breakdown, visual execution proofs of data routin
 
 📂 **Repository Structure**
 
-**1. EDAS1_SQL/ (Database Setup & Metadata)**
+**1. EDAS1_SQL (Database Setup & Metadata)**
 Contains the SQL scripts used to configure the Azure SQL environment:
 * `Customer.sql` & `Orders.sql`: Source data schema and mock data injection for testing.
 * `DQ_Rules.sql`: The "Brain" of the firewall; the centralized metadata control table defining thresholds and routing actions.
 
-**2. EDAS1_Notebooks/ (PySpark Engine)**
+**2. EDAS1_Notebooks (PySpark Engine)**
 Contains the core transformation and dynamic validation logic:
 * `NB_Bronze_to_Silver_DQ_Firewall.ipynb`: The master PySpark engine that parses SQL metadata rules, performs dynamic validations, routes records, and automatically recovers quarantined data upon rule updates.
 * `NB_Update_WaterMark.ipynb`: Manages incremental loads by updating the high-watermark value.
 * `NB_Setup_Pipeline_Metadata.ipynb` & `NB_WaterMarkTable.ipynb`: Initial setup for audit and watermark tables.
 
-**3. EDAS1_Pipelines/ (Fabric Pipeline JSON)**
+**3. EDAS1_Pipelines (Fabric Pipeline JSON)**
 Contains the JSON export of the master orchestration pipeline:
 * `PL_Master_DQ_Execution.json`: Orchestrates the end-to-end flow from Watermark Lookup ➔ Azure SQL Ingestion ➔ PySpark DQ Firewall ➔ Audit Log Generation.
 
