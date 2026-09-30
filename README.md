@@ -13,7 +13,6 @@ For the complete architectural breakdown, visual execution proofs of data routin
 Contains the SQL scripts used to configure the Azure SQL environment:
 * `Customer.sql` & `Orders.sql`: Source data schema and mock data injection for testing.
 * `DQ_Rules.sql`: The "Brain" of the firewall; the centralized metadata control table defining thresholds and routing actions.
-* `pipeline_config.sql`: Stores dynamic error threshold limits for pipeline audits.
 
 **2. EDAS1_Notebooks/ (PySpark Engine)**
 Contains the core transformation and dynamic validation logic:
